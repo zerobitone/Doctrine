@@ -1,0 +1,32 @@
+ErrorDocument 403 /Doctrine/newsticker_d2/forbidden.php
+
+#ErrorDocument 400 /Doctrine/newsticker_d2/forbidden.php
+#ErrorDocument 401 /Doctrine/newsticker_d2/forbidden.php
+#ErrorDocument 403 /Doctrine/newsticker_d2/forbidden.php
+#ErrorDocument 404 /Doctrine/newsticker_d2/forbidden.php
+#ErrorDocument 500 /Doctrine/newsticker_d2/forbidden.php
+#RewriteCond %{HTTP_HOST} ^.*$
+#RewriteRule ^404.shtml$ http://localhost/Doctrine/newsticker_d2/forbidden.php [R=301,L]
+
+# Browser-Zugriff verbieten
+# Apache <= 2.2
+<IfModule !mod_authz_core.c>
+    Order deny,allow
+    Deny from all
+</IfModule>
+# Apache >= 2.3
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+
+# Browser-Zugriff selektiv erlauben
+<FilesMatch "((^$)|(^(index\.php|.+\.(css|js|gif|jpe?g|png))$))">
+    # Apache <= 2.2
+    <IfModule !mod_authz_core.c>
+        Allow from all
+    </IfModule>
+    # Apache >= 2.3
+    <IfModule mod_authz_core.c>
+        Require all granted
+    </IfModule>
+</FilesMatch>

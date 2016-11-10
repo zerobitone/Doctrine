@@ -1,0 +1,17 @@
+{
+    "autoload": {
+        "psr-0": {
+            "Controllers": "./src/",
+            "Entities": "./src/",
+            "Repositories": "./src/",
+            "Validators": "./src/"
+        }
+    },
+    "require": {
+        "php": ">=5.3.2",
+        "doctrine/orm": "2.4.4",
+        "gedmo/doctrine-extensions": "2.3.9",
+        "webmasters/doctrine-extensions": "3.0.0",
+        "ezyang/htmlpurifier": "4.6.0"
+    }
+}
